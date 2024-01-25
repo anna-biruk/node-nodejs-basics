@@ -1,7 +1,12 @@
 import fs from 'fs'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const wrongFilenamePath = "./fs/files/wrongFilename.txt";
-const properFilenamePath = "./fs/files/properFilename.md";
+const currentFile = fileURLToPath(import.meta.url);
+const currentDir = dirname(currentFile);
+
+const wrongFilenamePath = `${currentDir}/files/wrongFilename.txt`;
+const properFilenamePath = `${currentDir}/files/properFilename.md`;
 
 
 const rename = async () => {

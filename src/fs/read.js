@@ -1,6 +1,11 @@
-import fs from 'fs'
+import fs from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const filePath = './fs/files/fileToRead.txt'
+const currentFile = fileURLToPath(import.meta.url);
+const currentDir = dirname(currentFile);
+
+const filePath = `${currentDir}/files/fileToRead.txt`
 
 const read = async () => {
     if (!fs.existsSync(filePath)) {

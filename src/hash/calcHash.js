@@ -1,7 +1,12 @@
-import fs from 'fs'
-import crypto from 'crypto'
+import fs from 'fs';
+import crypto from 'crypto';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const filePath = './hash/files/fileToCalculateHashFor.txt';
+const currentFile = fileURLToPath(import.meta.url);
+const currentDir = dirname(currentFile);
+
+const filePath = `${currentDir}/files/fileToCalculateHashFor.txt`;
 
 const calculateHash = async () => {
     const hash = crypto.createHash('sha256');

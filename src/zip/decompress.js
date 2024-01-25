@@ -1,9 +1,14 @@
-import fs from 'fs'
-import zlib from 'zlib'
+import fs from 'fs';
+import zlib from 'zlib';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const currentFile = fileURLToPath(import.meta.url);
+const currentDir = dirname(currentFile);
 
 const decompress = async () => {
-    const fileToDecompress = './zip/files/archive.gz'
-    const outputFile = "./zip/files/fileToCompress.txt"
+    const fileToDecompress = `${currentDir}/files/archive.gz`
+    const outputFile = `${currentDir}/files/fileToCompress.txt`
 
     const readStream = fs.createReadStream(fileToDecompress);
     const writeStream = fs.createWriteStream(outputFile, 'utf-8')
